@@ -2,8 +2,6 @@
 
 #### DUBBO
 
-https://redis.io/topics/lru-cache
-
 TODO
 
 #### motan
