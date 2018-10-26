@@ -23,7 +23,7 @@ robj *createObject(int type, void *ptr) {
     return o;
 }
 ```
-根据设置的淘汰策略（当然可以动态修改），主要逻辑在redis.c的freeMemoryIfNeeded方法中，主要看下lru处理的分支。
+根据设置的淘汰策略（当然可以动态修改），进行内存释放。在redis.c的freeMemoryIfNeeded方法中，主要看下lru处理的分支。
 ```c
              /* volatile-lru and allkeys-lru policy */
             // 如果使用的是 LRU 策略，
