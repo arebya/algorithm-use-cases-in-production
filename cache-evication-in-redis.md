@@ -1,6 +1,6 @@
 ## 缓存淘汰算法
 
-#### LRU
+#### redis中的lru
 
 https://redis.io/topics/lru-cache
 
@@ -63,13 +63,18 @@ robj *createObject(int type, void *ptr) {
                 }
             }
  ```
+ 
 官网提到，redis的这种lru过期算法并不是精准的lru算法，不能准确淘汰掉idle时间最长的那个key，主要就是因为内存考虑设置了maxmemory_samples，当然增大这个值可以提高在lru过程中的准确性，但是相应的内存压力会比较大，这对redis server这种内存敏感型的存储来说并不一定合适。实际情况下，还是要根据业务情况分析key的访问情况，调整不同的参数，包括设置不同的过期策略。
  
  
- #### tomcat中使用的lru,CsrfPreventionFilter,内部使用LruCache来进行请求判断。具体实现就是LinkedHashMap,使用双端链表。
+ #### tomcat中使用的lru
+ 
+ CsrfPreventionFilter,内部使用LruCache来进行请求判断。具体实现就是LinkedHashMap,使用双端链表。
  
  
- #### 一些改进的lru算法实现机制，比如multi-queue 或者lru-k，需要继续研究，找一下使用场景
+ #### 其他
+ 
+ 一些改进的lru算法实现机制，比如multi-queue 或者lru-k，需要继续研究，找一下使用场景
 
  
  
